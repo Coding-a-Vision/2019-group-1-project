@@ -1,4 +1,33 @@
 <resources>
-    <string name="app_name">Track Money</string>
+    <string name="app_name">TrackMoney</string>
+    <string name="add_button">Add</string>
     <string name="action_settings">Settings</string>
+
+    <string name="placeholder_text">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        \n\nPellentesque gravida ligula eget nibh hendrerit elementum sit amet vel est.
+        \nInteger pharetra enim non aliquet elementum.
+        \nVivamus et nisi pharetra, molestie lorem sit amet, placerat neque.
+        \nAliquam tincidunt, nisi ac semper convallis, nunc eros dignissim quam, non vehicula lorem nisl rhoncus nisl.
+        \n\nNullam auctor mi quam, nec scelerisque leo egestas facilisis.
+        \nQuisque mollis varius metus in efficitur.
+        \nCras mi nisi, feugiat a velit vel, malesuada tincidunt mi.
+        \nNulla eu vulputate dui, sit amet bibendum mauris.
+        \nNam tincidunt nibh ipsum, at consequat libero laoreet a.\n\n
+
+        Mauris semper ante ac est suscipit porttitor.
+        \n\nPhasellus et justo eget quam porttitor cursus.
+        \nSed rhoncus porttitor risus vitae dignissim.
+        \nNunc convallis, massa quis maximus ultricies, ex lectus mattis mi, eget maximus massa elit vel enim.
+        \nVivamus tincidunt libero turpis, maximus consectetur neque cursus commodo.
+        \n\nInteger tempor eros sed elit placerat sollicitudin id sed libero.
+        \nNulla facilisi.
+        \nEtiam vel mauris facilisis, facilisis ex sit amet, dapibus tellus.
+        \nMaecenas efficitur faucibus ipsum, at finibus tortor gravida ac.
+        \n\nDonec blandit sapien odio, sed dictum nisi malesuada id.
+        \nSuspendisse sit amet porta elit, non posuere sem.
+        \nSuspendisse vulputate mi sed feugiat lobortis. Donec pharetra mi massa.
+        \nPellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\n\n
+
+    </string>
 </resources>
