@@ -10,5 +10,5 @@
     <string name="money_track">sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n</string>
     <string name="guadagno">Guadagno</string>
     <string name="spesa">Spesa</string>
-    <string name="totsle">Totale</string>
+    <string name="totale">Totale</string>
 </resources>

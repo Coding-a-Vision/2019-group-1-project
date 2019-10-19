@@ -30,7 +30,7 @@
         <TextView
             android:id="@+id/totale"
             style="@style/attempt_style"
-            android:text="@string/totsle" />
+            android:text="@string/totale" />
     </LinearLayout>
 
     <ScrollView
