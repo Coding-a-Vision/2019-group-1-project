@@ -8,4 +8,20 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="attempt_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/dim1</item>
+        <item name="android:layout_marginTop">@dimen/dim1</item>
+        <item name="android:layout_marginEnd">@dimen/dim1</item>
+        <item name="android:layout_marginBottom">@dimen/dim1</item>
+        <item name="android:paddingStart">@dimen/dim1</item>
+        <item name="android:paddingTop">@dimen/dim1</item>
+        <item name="android:paddingEnd">@dimen/dim1</item>
+        <item name="android:paddingBottom">@dimen/dim2</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
 </resources>
