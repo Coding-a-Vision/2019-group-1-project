@@ -11,4 +11,9 @@
     <string name="guadagno">Guadagno</string>
     <string name="spesa">Spesa</string>
     <string name="totale">Totale</string>
+    <string name="income_text">Income</string>
+    <string name="expense_text">Expense</string>
+    <string name="add_income_expense_title_text">Add Income/Expense</string>
+    <string name="date_hint">31-12-2019</string>
+    <string name="save_income_expense_text">SAVE</string>
 </resources>
