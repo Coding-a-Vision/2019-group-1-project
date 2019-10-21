@@ -5,17 +5,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 
-
-class MainActivity : AppCompatActivity() {
+class AddIncomeExpenseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_add_income_expense)
     }
 
     // Called when user taps the Add Income/Expense button
-    fun addIncomeExpense(view: View) {
-        val intent = Intent(this, AddIncomeExpenseActivity::class.java)
+    fun turnToMain(view: View) {
+        val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
 }
