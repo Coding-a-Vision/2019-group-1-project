@@ -2,7 +2,11 @@
     <string name="app_name">TrackMoney</string>
     <string name="add_button">Add</string>
     <string name="action_settings">Settings</string>
-    
+
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
     <string name="data">Data</string>
     <string name="money_track">sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n</string>
     <string name="guadagno">Guadagno</string>
@@ -14,7 +18,7 @@
     <string name="date_hint">31-12-2019</string>
     <string name="save_income_expense_text">SAVE</string>
     <string name="paid_with_cash_text">Paid with cash?</string>
-    
+
     <!-- Categories -->
     <string-array name="categories">
         <item>Food</item>
@@ -22,4 +26,7 @@
         <item>Culture</item>
         <item>Education</item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
