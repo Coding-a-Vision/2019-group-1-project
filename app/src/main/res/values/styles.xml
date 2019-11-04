@@ -2,7 +2,6 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -18,7 +17,7 @@
         <item name="android:paddingStart">@dimen/dim1</item>
         <item name="android:paddingTop">@dimen/dim1</item>
         <item name="android:paddingEnd">@dimen/dim1</item>
-        <item name="android:paddingBottom">@dimen/dim2</item>
+        <item name="android:paddingBottom">@dimen/dim1</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textSize">20sp</item>
         <item name="android:layout_weight">1</item>
