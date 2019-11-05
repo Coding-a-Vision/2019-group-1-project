@@ -17,26 +17,63 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/income"
+                android:id="@+id/income_title"
                 style="@style/attempt_style"
-                android:text="@string/income_text"
+                android:text="@string/income_title"
                 android:textColor="#4CAF50"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/expense"
+                android:id="@+id/expense_title"
                 style="@style/attempt_style"
-                android:text="@string/expense_text"
+                android:text="@string/expense_title"
                 android:textColor="#F44336"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/total"
+                android:id="@+id/total_title"
                 style="@style/attempt_style"
-                android:text="@string/totale"
+                android:text="@string/total_title"
                 android:textSize="24sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/income"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.00"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:layout_weight="1"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/expense"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.00"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:layout_weight="1"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.00"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:layout_weight="1"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -46,22 +83,22 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/Data"
+                android:id="@+id/date"
                 style="@style/attempt_style"
-                android:text="@string/data"
+                android:text="@string/date"
                 android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/Guadagno"
                 style="@style/attempt_style"
                 android:layout_marginStart="20dp"
-                android:text="@string/guadagno"
+                android:text="@string/income_title"
                 android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/spesa"
                 style="@style/attempt_style"
-                android:text="@string/spesa"
+                android:text="@string/expense_title"
                 android:textAlignment="center" />
 
         </LinearLayout>
@@ -87,7 +124,7 @@
                     android:fontFamily="@font/snippet"
                     android:text="@string/money_track"
                     android:textStyle="bold"
-                    app:lineHeight="40dp" />
+                    app:lineHeight="20dp" />
             </LinearLayout>
         </ScrollView>
 
