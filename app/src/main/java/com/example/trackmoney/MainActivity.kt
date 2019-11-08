@@ -36,8 +36,8 @@ class MainActivity : AppCompatActivity() {
     }
     
     // Called when user taps the Add Income/Expense button
-    fun addIncomeExpense(view: View) {
-        val intent = Intent(this, AddIncomeExpenseActivity::class.java)
-        startActivity(intent)
-    }
+//    fun addIncomeExpense(view: View) {
+//        val intent = Intent(this, AddIncomeExpenseActivity::class.java)
+//        startActivity(intent)
+//    }
 }

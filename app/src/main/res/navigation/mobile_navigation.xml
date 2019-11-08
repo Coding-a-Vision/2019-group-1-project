@@ -22,4 +22,13 @@
         android:name="com.example.trackmoney.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/addIncomeExpense"
+        android:name="com.example.trackmoney.AddIncomeExpenseFragment"
+        android:label="fragment_add_income_expense"
+        tools:layout="@layout/fragment_add_income_expense" >
+        <action
+            android:id="@+id/action_addIncomeExpense_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
 </navigation>

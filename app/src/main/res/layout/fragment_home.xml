@@ -138,9 +138,9 @@
             android:layout_marginBottom="60dp"
             android:adjustViewBounds="true"
             android:isScrollContainer="false"
-            android:onClick="addIncomeExpense"
             app:backgroundTint="@color/colorAccent"
             app:srcCompat="@drawable/ic_action_add" />
+        <!--android:onClick="addIncomeExpense"-->
 
     </LinearLayout>
 
