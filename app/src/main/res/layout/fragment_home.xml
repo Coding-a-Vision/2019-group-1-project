@@ -18,7 +18,8 @@
 
             <TextView
                 android:id="@+id/income_title"
-                style="@style/attempt_style"
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
                 android:text="@string/income_title"
                 android:textColor="#4CAF50"
                 android:textSize="24sp"
@@ -26,7 +27,8 @@
 
             <TextView
                 android:id="@+id/expense_title"
-                style="@style/attempt_style"
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
                 android:text="@string/expense_title"
                 android:textColor="#F44336"
                 android:textSize="24sp"
@@ -34,7 +36,8 @@
 
             <TextView
                 android:id="@+id/total_title"
-                style="@style/attempt_style"
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
                 android:text="@string/total_title"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -84,20 +87,23 @@
 
             <TextView
                 android:id="@+id/date"
-                style="@style/attempt_style"
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
                 android:text="@string/date"
                 android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/Guadagno"
-                style="@style/attempt_style"
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_marginStart="20dp"
                 android:text="@string/income_title"
                 android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/spesa"
-                style="@style/attempt_style"
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
                 android:text="@string/expense_title"
                 android:textAlignment="center" />
 
