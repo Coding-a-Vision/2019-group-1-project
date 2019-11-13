@@ -15,6 +15,7 @@
     <string name="date_hint">31-12-2019</string>
     <string name="save_income_expense_text">SAVE</string>
     <string name="paid_with_cash_text">Paid with cash?</string>
+    <string name="pick_date">Pick Date</string>
 
     <!-- Categories -->
     <string-array name="categories">
