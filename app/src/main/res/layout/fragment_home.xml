@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
+            android:layout_marginTop="0dp"
             android:orientation="horizontal">
 
             <TextView
@@ -50,30 +54,30 @@
                 android:id="@+id/income"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="0.00"
                 android:textAlignment="center"
                 android:textSize="24sp"
-                android:layout_weight="1"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/expense"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="0.00"
                 android:textAlignment="center"
                 android:textSize="24sp"
-                android:layout_weight="1"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="0.00"
                 android:textAlignment="center"
                 android:textSize="24sp"
-                android:layout_weight="1"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -101,47 +105,33 @@
                 android:text="@string/expense_title"
                 android:textAlignment="center" />
 
+
         </LinearLayout>
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:layout_weight="1">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/money_track"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/snippet"
-                    android:text="@string/money_track"
-                    android:textStyle="bold"
-                    app:lineHeight="20dp" />
-            </LinearLayout>
-        </ScrollView>
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/categories_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="60dp"
-            android:adjustViewBounds="true"
-            android:isScrollContainer="false"
-            app:backgroundTint="@color/colorAccent"
-            app:srcCompat="@drawable/ic_action_add" />
+            android:layout_margin="16dp"
+            tools:itemCount="10"
+            tools:listitem="@layout/listitem" />
         <!--android:onClick="addIncomeExpense"-->
 
+
     </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="16dp"
+        android:adjustViewBounds="true"
+        android:isScrollContainer="false"
+        app:backgroundTint="@color/colorAccent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:srcCompat="@drawable/ic_action_add"
+        android:layout_marginBottom="60dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
