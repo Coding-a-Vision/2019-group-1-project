@@ -7,38 +7,32 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.trackmoney.Expense
+import com.example.trackmoney.MainActivity
 import com.example.trackmoney.MyAdapter
 import com.example.trackmoney.R
-import com.example.trackmoney.ui.home.MyList.categoryList1
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class HomeFragment : Fragment() {
 
-    private lateinit var homeViewModel: HomeViewModel
-
-//    private lateinit var viewAdapter: RecyclerView.Adapter<*>
-//    private lateinit var viewManager: RecyclerView.LayoutManager
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-            ViewModelProviders.of(this).get(HomeViewModel::class.java)
+
         val root = inflater.inflate(R.layout.fragment_home, container, false)
-        /*val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(this, Observer {
-            textView.text = it
-        })*/
         return root
     }
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -67,15 +61,26 @@ class HomeFragment : Fragment() {
         if (arguments != null){
             val args = HomeFragmentArgs.fromBundle(arguments!!)
             val money = Expense(args.string)
+
             // categoryList1 = categoryList1.plus(money).toMutableList() // così funziona
-            categoryList1.add(money)
-            //submitlist invia all'adapter una lista da essere visualizzata
-            adapter.submitList(categoryList1)
+
+            // Create reference to ViewModel created inside the MainActivity
+            // so when the fragment is recreated, the homeViewModel (essendo)inside the
+            // the MainActivity isn't recreated. In this manner we can add element in
+            // the categoryList1 in the HomeViewModel without the ricreation of the List
+
+            val viewModel = (activity as MainActivity).homeViewModel
+
+            viewModel.categoryList1.add(money)
+
+            //submitlist send to adapter a list to display
+
+            adapter.submitList(viewModel.categoryList1)
 
 
 
-            Log.i("DEBUG","Current list is ${adapter.currentList} and element count is ${adapter
-                .currentList.size} and array size is ${categoryList1.size} and first element is ${categoryList1[0]}")
+//            Log.i("DEBUG","Current list is ${adapter.currentList} and element count is ${adapter
+//                .currentList.size} and array size is ${categoryList1.size} and first element is ${categoryList1[0]}")
 
 //            Toast.makeText(context, " ${args.string}", Toast.LENGTH_LONG).show()
 //            var dummyText: String = ""

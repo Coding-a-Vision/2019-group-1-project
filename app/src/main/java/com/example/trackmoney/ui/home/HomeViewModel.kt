@@ -27,13 +27,9 @@ class HomeViewModel : ViewModel() {
 
 //    private val _categoryList1 = MutableLiveData<MutableList<Expense>>()
 
-//    var categoryList1 = mutableListOf(
-//        Expense("ciuccia"),
-//        Expense("ciuccia2"),
-//        Expense("ciuccia3"),
-//        Expense("ciuccia4"),
-//        Expense("ciuccia5")
-//    )
+    var categoryList1 = mutableListOf(
+        Expense("ciao")
+    )
 
     init {
         _incomeExpenseData.value = ArrayList()
