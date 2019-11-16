@@ -1,10 +1,12 @@
 package com.example.trackmoney.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.trackmoney.Expense
 import com.example.trackmoney.MyAdapter
 import com.example.trackmoney.R
+import com.example.trackmoney.ui.home.MyList.categoryList1
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
@@ -19,9 +22,6 @@ class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
 
-    private val categoryList = listOf(
-        Expense("")
-    )
 //    private lateinit var viewAdapter: RecyclerView.Adapter<*>
 //    private lateinit var viewManager: RecyclerView.LayoutManager
 
@@ -61,16 +61,21 @@ class HomeFragment : Fragment() {
 
         val adapter = MyAdapter()
         recyclerView.adapter = adapter
-        adapter.submitList(categoryList)
 
 
         /*Take the argument from the AddIncomeExpenseFragment*/
         if (arguments != null){
             val args = HomeFragmentArgs.fromBundle(arguments!!)
             val money = Expense(args.string)
-            adapter.submitList(adapter.currentList.plus(money))
-            adapter.notifyDataSetChanged()
+            // categoryList1 = categoryList1.plus(money).toMutableList() // così funziona
+            categoryList1.add(money)
+            //submitlist invia all'adapter una lista da essere visualizzata
+            adapter.submitList(categoryList1)
 
+
+
+            Log.i("DEBUG","Current list is ${adapter.currentList} and element count is ${adapter
+                .currentList.size} and array size is ${categoryList1.size} and first element is ${categoryList1[0]}")
 
 //            Toast.makeText(context, " ${args.string}", Toast.LENGTH_LONG).show()
 //            var dummyText: String = ""
