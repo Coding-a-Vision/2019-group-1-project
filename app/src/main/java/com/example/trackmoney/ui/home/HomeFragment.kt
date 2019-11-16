@@ -62,21 +62,23 @@ class HomeFragment : Fragment() {
             val args = HomeFragmentArgs.fromBundle(arguments!!)
             val money = Expense(args.string)
 
-            // categoryList1 = categoryList1.plus(money).toMutableList() // così funziona
-
             // Create reference to ViewModel created inside the MainActivity
             // so when the fragment is recreated, the homeViewModel (essendo)inside the
             // the MainActivity isn't recreated. In this manner we can add element in
             // the categoryList1 in the HomeViewModel without the ricreation of the List
 
             val viewModel = (activity as MainActivity).homeViewModel
+            if(args.string == "default"){
+                adapter.submitList(viewModel.categoryList1)
+            }else{
+                // categoryList1 = categoryList1.plus(money).toMutableList() // così funziona
 
-            viewModel.categoryList1.add(money)
+                viewModel.categoryList1.add(money)
 
-            //submitlist send to adapter a list to display
+                //submitlist send to adapter a list to display
 
-            adapter.submitList(viewModel.categoryList1)
-
+                adapter.submitList(viewModel.categoryList1)
+            }
 
 
 //            Log.i("DEBUG","Current list is ${adapter.currentList} and element count is ${adapter

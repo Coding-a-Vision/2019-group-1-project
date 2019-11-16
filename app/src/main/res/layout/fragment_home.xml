@@ -113,7 +113,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            tools:itemCount="10"
+            tools:itemCount="3"
             tools:listitem="@layout/listitem" />
         <!--android:onClick="addIncomeExpense"-->
 

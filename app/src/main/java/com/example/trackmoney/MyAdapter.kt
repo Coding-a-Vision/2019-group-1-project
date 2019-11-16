@@ -36,7 +36,8 @@ class MyAdapter :
     }
 }
 
-/*Hold the referencies of the view of single element*/
+/*Hold the referencies of the view of single element
+* If we have two element in listitem.xml, we can 2 findViewById, 1 for each element*/
 
 class CategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 

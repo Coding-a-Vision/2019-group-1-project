@@ -16,7 +16,8 @@
         <argument
             android:name="string"
             app:argType="string"
-            android:defaultValue="default" />
+            android:defaultValue="default"
+            app:nullable="true" />
     </fragment>
 
     <fragment
