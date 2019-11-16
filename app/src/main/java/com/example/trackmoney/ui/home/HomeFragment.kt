@@ -68,7 +68,7 @@ class HomeFragment : Fragment() {
             // the categoryList1 in the HomeViewModel without the ricreation of the List
 
             val viewModel = (activity as MainActivity).homeViewModel
-            if(args.string == "default"){
+            if(args.string == "default" || args.string == ""){
                 adapter.submitList(viewModel.categoryList1)
             }else{
                 // categoryList1 = categoryList1.plus(money).toMutableList() // così funziona
