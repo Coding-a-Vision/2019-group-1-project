@@ -5,10 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.example.trackmoney.AddIncomeExpenseFragment
 import com.example.trackmoney.R
+//import com.example.trackmoney.ui.home.HomeFragmentArgs
 
 class DashboardFragment : Fragment() {
 
@@ -26,6 +29,10 @@ class DashboardFragment : Fragment() {
         dashboardViewModel.text.observe(this, Observer {
             textView.text = it
         })
+
+//        val args: HomeFragmentArgs =
+//           HomeFragmentArgs.fromBundle(arguments!!)
+//          Toast.makeText(context, "NumCorrect: ${args.value}", Toast.LENGTH_LONG).show()
         return root
     }
 }
