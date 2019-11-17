@@ -35,9 +35,6 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         homeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
 
-        // Get data from ViewModel
-//        updateHomeText()
-
         // LayoutManager and Adapter
         recyclerView_home.layoutManager = LinearLayoutManager(this.context)
         recyclerView_home.adapter = HomeAdapter()
@@ -76,21 +73,5 @@ class HomeFragment : Fragment() {
         homeViewModel.text.observe(this, Observer {
             it.let { (recyclerView_home.adapter as HomeAdapter).home_transaction_data = it }
         })
-
-//        updateHomeText()
     }
-
-//    private fun updateHomeText() {
-//        // Get a reference for the textView to change in home fragment
-//        val home_text_view: TextView = view!!.findViewById(R.id.text_home)
-//
-//        // Set home_text_view content getting the data from the ViewModel
-//        homeViewModel.text.observe(this, Observer {
-//            var dummyText: String = ""
-//            for(dummy_data in it) {
-//                dummyText += dummy_data + "\n"
-//            }
-//            home_text_view.text = dummyText
-//        })
-//    }
 }
