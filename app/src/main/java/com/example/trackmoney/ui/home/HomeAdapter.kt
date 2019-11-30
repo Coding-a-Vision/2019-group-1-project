@@ -1,38 +1,51 @@
 package com.example.trackmoney.ui.home
 
+import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.trackmoney.R
+import com.example.trackmoney.model.MoneyTransaction
 import kotlinx.android.synthetic.main.home_row.view.*
 
-class HomeAdapter : RecyclerView.Adapter<HomeViewHolder>() {
+class HomeAdapter :
+    ListAdapter<MoneyTransaction, MoneyTransactionViewHolder>(MoneyTransactionDiffUtil()) {
 
-    var home_transaction_data = listOf<String>("foo-1", "bar-1", "baz-1")
-
-    // Custom setter
-    set(value) {
-        field = value
-        notifyDataSetChanged()
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoneyTransactionViewHolder {
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val cellForRow = layoutInflater.inflate(R.layout.home_row, parent, false)
+        return MoneyTransactionViewHolder(cellForRow)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
-        val layout_inflater = LayoutInflater.from(parent.context)
-        val cell_for_row = layout_inflater.inflate(R.layout.home_row, parent, false)
-        return HomeViewHolder(cell_for_row)
-    }
+    override fun onBindViewHolder(holder: MoneyTransactionViewHolder, position: Int) {
+        val moneyTransaction = getItem(position)
+        holder.moneyTransaction.text = moneyTransaction.amount.toString()
 
-    override fun getItemCount(): Int {
-        return home_transaction_data.size
-    }
-
-    override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
-        val home_transaction_data = home_transaction_data[position]
-        holder.view.textView_home_row.text = home_transaction_data
+        // Onclick listener to show the details of a specific MoneyTransaction
+        holder.moneyTransaction.setOnClickListener {
+            // TODO
+//            MoneyTransactionDetailFragment.openMoneyTransactionDetailActivity(
+//                holder.moneyTransaction.context as Activity, moneyTransaction.id
+//            )
+        }
     }
 }
 
-class HomeViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
+class MoneyTransactionViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    val moneyTransaction = view.findViewById<TextView>(R.id.textView_home_row)
+}
+
+class MoneyTransactionDiffUtil : DiffUtil.ItemCallback<MoneyTransaction>() {
+    override fun areItemsTheSame(oldItem: MoneyTransaction, newItem: MoneyTransaction): Boolean {
+        return oldItem.id == newItem.id
+    }
+
+    override fun areContentsTheSame(oldItem: MoneyTransaction, newItem: MoneyTransaction): Boolean {
+        return oldItem == newItem
+    }
 
 }

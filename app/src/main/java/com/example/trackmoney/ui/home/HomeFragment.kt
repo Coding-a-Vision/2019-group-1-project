@@ -7,7 +7,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -15,8 +14,10 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.trackmoney.AddIncomeExpenseActivity
 import com.example.trackmoney.R
+import com.example.trackmoney.model.MoneyTransaction
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlin.random.Random
 
 class HomeFragment : Fragment() {
 
@@ -25,28 +26,36 @@ class HomeFragment : Fragment() {
     }
 
     private lateinit var homeViewModel: HomeViewModel
+    private lateinit var homeAdapter: HomeAdapter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout to the fragment
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         homeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
 
         // LayoutManager and Adapter
+        homeAdapter = HomeAdapter()
+        recyclerView_home.adapter = homeAdapter
         recyclerView_home.layoutManager = LinearLayoutManager(this.context)
-        recyclerView_home.adapter = HomeAdapter()
 
-        // Observer on text variable
-        homeViewModel.text.observe(this, Observer {
-            it.let { (recyclerView_home.adapter as HomeAdapter).home_transaction_data = it }
-        })
+        observeViewModel()
 
-        // Called when user taps the Add Income/Expense button
-        val fabButton = view.findViewById<FloatingActionButton>(R.id.fab)
-        fabButton.setOnClickListener {
+        setupViews()
+    }
+
+    private fun setupViews() {
+        val addMoneyTransactionButton: FloatingActionButton =
+            requireActivity().findViewById(R.id.fab)
+
+        addMoneyTransactionButton.setOnClickListener {
             val intent = Intent(activity, AddIncomeExpenseActivity::class.java)
             startActivityForResult(intent, 1000)
         }
@@ -55,23 +64,43 @@ class HomeFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if(requestCode == 1000 && resultCode == Activity.RESULT_OK) {
-            if(data != null) {
-                Log.i("ACTIVITY RESULT", data?.extras?.get("ADD_IE_RESULT").toString())
-                val data_callback = data?.extras?.get("ADD_IE_RESULT").toString()
-                homeViewModel.addIncomeExpenseData(data_callback)
-                Toast.makeText(context, "Data added.", Toast.LENGTH_SHORT).show()
+        if (requestCode == 1000 && resultCode == Activity.RESULT_OK) {
+            if (data != null) {
+                // Send AddMoneyTransaction Event
+                homeViewModel.send(
+                    MoneyTransactionEvent.AddMoneyTransaction(
+                        MoneyTransaction(
+                            id = Random.nextInt().toString(),
+                            amount = data.extras!!.getFloat("ADD_MONEY_TRANSACTION_RESULT_AMOUNT"),
+                            type = "None." // TODO: Get it from data.extras
+                        )
+                    )
+                )
+                Toast.makeText(context, "Transaction added.", Toast.LENGTH_SHORT).show()
             } else {
-                Log.i("ACTIVITY RESULT", "was NULL.")
-                Toast.makeText(context, "Error, please try again.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Error, no data.", Toast.LENGTH_SHORT).show()
             }
         } else {
-            Log.i("ACTIVITY RESULT", "was NULL.")
             Toast.makeText(context, "Error, please try again.", Toast.LENGTH_SHORT).show()
         }
+    }
 
-        homeViewModel.text.observe(this, Observer {
-            it.let { (recyclerView_home.adapter as HomeAdapter).home_transaction_data = it }
+    private fun observeViewModel() {
+        // Observer on homeViewModel state
+        homeViewModel.state.observe(this, Observer { state ->
+            when (state) {
+                is MoneyTransactionState.Error -> showError(state.error)
+                is MoneyTransactionState.Success -> showMoneyTransactions(state.moneyTransactions)
+            }
         })
+    }
+
+    private fun showError(error: Throwable) {
+        Log.i("SHOW ERROR", "Error: ", error)
+        Toast.makeText(context, "Error!", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun showMoneyTransactions(moneyTransactions: List<MoneyTransaction>) {
+        homeAdapter.submitList(moneyTransactions)
     }
 }

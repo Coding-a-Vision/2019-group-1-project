@@ -29,11 +29,11 @@ class AddIncomeExpenseActivity : AppCompatActivity() {
     fun turnToMain(view: View) {
 
         val intent = Intent()
-        val result_text = findViewById<EditText>(R.id.income_expense_amount).text.toString()
+        val amount = findViewById<EditText>(R.id.income_expense_amount).text
 
-        intent.putExtra("ADD_IE_RESULT",result_text)
+        intent.putExtra("ADD_MONEY_TRANSACTION_RESULT_AMOUNT", amount)
 
-        if(result_text.isEmpty()) {
+        if(amount.isEmpty()) {
             setResult((Activity.RESULT_CANCELED))
         } else {
             setResult(Activity.RESULT_OK, intent)
