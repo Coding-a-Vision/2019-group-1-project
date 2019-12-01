@@ -1,18 +1,12 @@
 package com.example.trackmoney
 
 import android.app.Activity
-import android.app.DatePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
-import com.example.trackmoney.ui.home.HomeFragment
-import java.text.SimpleDateFormat
-import java.util.*
 
 class AddIncomeExpenseActivity : AppCompatActivity() {
 
@@ -29,11 +23,11 @@ class AddIncomeExpenseActivity : AppCompatActivity() {
     fun turnToMain(view: View) {
 
         val intent = Intent()
-        val amount = findViewById<EditText>(R.id.income_expense_amount).text
+        val amount = findViewById<EditText>(R.id.income_expense_amount).text.toString()
 
         intent.putExtra("ADD_MONEY_TRANSACTION_RESULT_AMOUNT", amount)
 
-        if(amount.isEmpty()) {
+        if (amount.isEmpty()) {
             setResult((Activity.RESULT_CANCELED))
         } else {
             setResult(Activity.RESULT_OK, intent)

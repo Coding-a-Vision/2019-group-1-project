@@ -1,4 +1,4 @@
 package com.example.trackmoney.model
 
-data class MoneyTransaction(val id: String, val amount: Float, val type: String) {
+data class MoneyTransaction(val id: String, val amount: String, val type: String) {
 }

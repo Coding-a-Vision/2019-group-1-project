@@ -71,7 +71,7 @@ class HomeFragment : Fragment() {
                     MoneyTransactionEvent.AddMoneyTransaction(
                         MoneyTransaction(
                             id = Random.nextInt().toString(),
-                            amount = data.extras!!.getFloat("ADD_MONEY_TRANSACTION_RESULT_AMOUNT"),
+                            amount = data.extras!!.get("ADD_MONEY_TRANSACTION_RESULT_AMOUNT").toString(),
                             type = "None." // TODO: Get it from data.extras
                         )
                     )

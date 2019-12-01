@@ -1,6 +1,5 @@
 package com.example.trackmoney.ui.home
 
-import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.trackmoney.R
 import com.example.trackmoney.model.MoneyTransaction
-import kotlinx.android.synthetic.main.home_row.view.*
+
 
 class HomeAdapter :
     ListAdapter<MoneyTransaction, MoneyTransactionViewHolder>(MoneyTransactionDiffUtil()) {
