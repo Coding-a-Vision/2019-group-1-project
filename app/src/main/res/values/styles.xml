@@ -14,9 +14,9 @@
         <item name="android:layout_marginTop">@dimen/dim1</item>
         <item name="android:layout_marginEnd">@dimen/dim1</item>
         <item name="android:layout_marginBottom">@dimen/dim1</item>
-        <item name="paddingStart">@dimen/dim1</item>
+        <item name="android:paddingStart">@dimen/dim1</item>
         <item name="android:paddingTop">@dimen/dim1</item>
-        <item name="paddingEnd">@dimen/dim1</item>
+        <item name="android:paddingEnd">@dimen/dim1</item>
         <item name="android:paddingBottom">@dimen/dim1</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textSize">20sp</item>
