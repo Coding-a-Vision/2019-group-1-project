@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
+    <Button
         android:id="@+id/income_expense_date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -27,9 +27,9 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="@string/date_hint"
-        android:inputType="date"
+        android:text="@string/pick_date"
         android:textAlignment="center"
+        android:onClick="showDatePickerDialog"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/income_expense_title" />
@@ -56,28 +56,30 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/income_expense_amount">
 
         <RadioButton
             android:id="@+id/radio_button_income"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:layout_weight="1"
             android:text="@string/income_title" />
 
         <RadioButton
             android:id="@+id/radio_button_expense"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:layout_weight="1"
             android:text="@string/expense_title" />
-
     </RadioGroup>
 
     <Switch
@@ -101,6 +103,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:entries="@array/categories"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/switch1" />
