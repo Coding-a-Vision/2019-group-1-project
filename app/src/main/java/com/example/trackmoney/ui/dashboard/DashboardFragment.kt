@@ -21,11 +21,17 @@ class DashboardFragment : Fragment() {
     ): View? {
         dashboardViewModel =
             ViewModelProviders.of(this).get(DashboardViewModel::class.java)
+
         val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
+
         val textView: TextView = root.findViewById(R.id.text_dashboard)
         dashboardViewModel.text.observe(this, Observer {
             textView.text = it
         })
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0e41048c5817a15dd0313701e84672fdf1d12f77
         return root
     }
 }

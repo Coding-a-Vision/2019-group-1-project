@@ -8,7 +8,6 @@
     <string name="title_notifications">Notifications</string>
 
     <string name="date">Date</string>
-    <string name="money_track">sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n sp 1\n</string>
     <string name="income_title">Income</string>
     <string name="expense_title">Expense</string>
     <string name="total_title">Total</string>
@@ -16,6 +15,8 @@
     <string name="date_hint">31-12-2019</string>
     <string name="save_income_expense_text">SAVE</string>
     <string name="paid_with_cash_text">Paid with cash?</string>
+    <string name="pick_date">Pick Date</string>
+    <string name="date_title">Date</string>
 
     <!-- Categories -->
     <string-array name="categories">
