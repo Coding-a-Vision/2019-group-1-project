@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.trackmoney.AddIncomeExpenseActivity
 import com.example.trackmoney.R
-import com.example.trackmoney.model.MoneyTransaction
+import com.example.trackmoney.db.MoneyTransaction
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlin.random.Random

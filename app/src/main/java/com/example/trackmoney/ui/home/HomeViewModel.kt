@@ -2,7 +2,7 @@ package com.example.trackmoney.ui.home
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.trackmoney.model.MoneyTransaction
+import com.example.trackmoney.db.MoneyTransaction
 
 
 // Events that HomeFragment can send
