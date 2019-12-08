@@ -46,9 +46,5 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.1.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.1.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
-<<<<<<< HEAD
-=======
-
     implementation 'com.google.android.material:material:1.1.0-beta02'
->>>>>>> 0e41048c5817a15dd0313701e84672fdf1d12f77
 }

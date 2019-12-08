@@ -6,28 +6,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-<<<<<<< HEAD
-import android.widget.Button
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.fragment.findNavController
-=======
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.trackmoney.AddIncomeExpenseActivity
->>>>>>> 0e41048c5817a15dd0313701e84672fdf1d12f77
 import com.example.trackmoney.R
 import com.example.trackmoney.model.MoneyTransaction
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-<<<<<<< HEAD
-
-class HomeFragment : Fragment() {
-
-    private lateinit var homeViewModel: HomeViewModel
-=======
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlin.random.Random
 
@@ -39,39 +26,18 @@ class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
     private lateinit var homeAdapter: HomeAdapter
->>>>>>> 0e41048c5817a15dd0313701e84672fdf1d12f77
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-<<<<<<< HEAD
-        homeViewModel =
-            ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
-        /*val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(this, Observer {
-            textView.text = it
-        })*/
-        return root
-=======
         return inflater.inflate(R.layout.fragment_home, container, false)
->>>>>>> 0e41048c5817a15dd0313701e84672fdf1d12f77
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-<<<<<<< HEAD
-        // Called when user taps the Add Income/Expense button
-        val fabButton = view.findViewById<FloatingActionButton>(R.id.fab)
-        fabButton.setOnClickListener {
-            findNavController().navigate(R.id.addIncomeExpense)
-        }
-    }
-}
-=======
         homeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
 
         // LayoutManager and Adapter
@@ -129,7 +95,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun showError(error: Throwable) {
-        Log.i("SHOW ERROR", "Error: ", error)
         Toast.makeText(context, "Error!", Toast.LENGTH_SHORT).show()
     }
 
@@ -137,4 +102,3 @@ class HomeFragment : Fragment() {
         homeAdapter.submitList(moneyTransactions)
     }
 }
->>>>>>> 0e41048c5817a15dd0313701e84672fdf1d12f77

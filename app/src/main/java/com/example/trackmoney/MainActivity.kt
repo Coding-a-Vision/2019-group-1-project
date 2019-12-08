@@ -1,15 +1,7 @@
 package com.example.trackmoney
 
-<<<<<<< HEAD
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
-=======
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
->>>>>>> 0e41048c5817a15dd0313701e84672fdf1d12f77
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController

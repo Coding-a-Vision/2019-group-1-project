@@ -2,16 +2,9 @@ package com.example.trackmoney.ui.home
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-<<<<<<< HEAD
-=======
 import com.example.trackmoney.model.MoneyTransaction
->>>>>>> 0e41048c5817a15dd0313701e84672fdf1d12f77
 
 
-<<<<<<< HEAD
-    private val _text = MutableLiveData<String>().apply {
-        value = ""
-=======
 // Events that HomeFragment can send
 sealed class MoneyTransactionEvent {
     object Load : MoneyTransactionEvent()
@@ -61,7 +54,5 @@ class HomeViewModel : ViewModel() {
         // Set state to success
         // TODO: Handle other states
         state.value = MoneyTransactionState.Success(moneyTransactionData.value!!.toList())
->>>>>>> 0e41048c5817a15dd0313701e84672fdf1d12f77
     }
-    val text: LiveData<String> = _text
 }
