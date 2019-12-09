@@ -1,8 +1,13 @@
 package com.example.trackmoney.ui.home
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.example.trackmoney.model.MoneyTransaction
+import androidx.lifecycle.viewModelScope
+import com.example.trackmoney.db.MoneyTransaction
+import com.example.trackmoney.db.MoneyTransactionDatabase
+import com.example.trackmoney.db.MoneyTransactionRepository
+import kotlinx.coroutines.launch
 
 
 // Events that HomeFragment can send
@@ -19,20 +24,27 @@ sealed class MoneyTransactionState {
     data class Success(val moneyTransactions: List<MoneyTransaction>) : MoneyTransactionState()
 }
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val moneyTransactionData = MutableLiveData<MutableList<MoneyTransaction>>()
+    private val repository: MoneyTransactionRepository
+    private val moneyTransactionData = MutableLiveData<List<MoneyTransaction>>()
     var state: MutableLiveData<MoneyTransactionState> = MutableLiveData()
 
     init {
-        moneyTransactionData.value = ArrayList()
+        val dao = MoneyTransactionDatabase.getDatabase(application).moneyTransactionDao()
+        repository = MoneyTransactionRepository(dao)
+        updateMoneyTransactions()
+    }
+
+    private fun updateMoneyTransactions() = viewModelScope.launch {
+        moneyTransactionData.postValue(repository.getMoneyTransactions())
+        state.value = MoneyTransactionState.Success(repository.getMoneyTransactions())
     }
 
     // Function to add moneyTransaction
-    fun addIncomeExpenseData(moneyTransaction: MoneyTransaction) {
-        val newList = moneyTransactionData
-        newList.value?.add(moneyTransaction)
-        moneyTransactionData.value = newList.value
+    private fun insert(moneyTransaction: MoneyTransaction) = viewModelScope.launch {
+        repository.insert(moneyTransaction)
+        updateMoneyTransactions()
     }
 
     // Function to send events from HomeFragment
@@ -41,7 +53,7 @@ class HomeViewModel : ViewModel() {
             is MoneyTransactionEvent.Load -> loadContent()
             is MoneyTransactionEvent.AddMoneyTransaction -> {
                 // Add new transaction
-                addIncomeExpenseData(moneyTransaction = event.moneyTransaction)
+                insert(moneyTransaction = event.moneyTransaction)
 
                 // Set state to success
                 // TODO: Handle other states

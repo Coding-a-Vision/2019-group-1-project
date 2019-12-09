@@ -3,18 +3,21 @@ package com.example.trackmoney.ui.home
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.trackmoney.AddIncomeExpenseActivity
+import com.example.trackmoney.ui.add_money_transaction.AddIncomeExpenseActivity
 import com.example.trackmoney.R
-import com.example.trackmoney.model.MoneyTransaction
+import com.example.trackmoney.db.DatabaseManager
+import com.example.trackmoney.db.MoneyTransaction
+import com.example.trackmoney.db.MoneyTransactionDao
+import com.example.trackmoney.db.MoneyTransactionRepository
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlin.random.Random
@@ -39,7 +42,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        homeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
+        homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
         // LayoutManager and Adapter
         homeAdapter = HomeAdapter()
@@ -87,7 +90,7 @@ class HomeFragment : Fragment() {
 
     private fun observeViewModel() {
         // Observer on homeViewModel state
-        homeViewModel.state.observe(this, Observer { state ->
+        homeViewModel.state.observe(viewLifecycleOwner, Observer { state ->
             when (state) {
                 is MoneyTransactionState.Error -> showError(state.error)
                 is MoneyTransactionState.Success -> showMoneyTransactions(state.moneyTransactions)
@@ -96,7 +99,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun showError(error: Throwable) {
-        Log.i("SHOW ERROR", "Error: ", error)
         Toast.makeText(context, "Error!", Toast.LENGTH_SHORT).show()
     }
 

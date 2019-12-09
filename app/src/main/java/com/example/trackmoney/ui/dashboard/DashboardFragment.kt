@@ -28,7 +28,6 @@ class DashboardFragment : Fragment() {
         dashboardViewModel.text.observe(this, Observer {
             textView.text = it
         })
-
         return root
     }
 }

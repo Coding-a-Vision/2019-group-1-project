@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.trackmoney.R
-import com.example.trackmoney.model.MoneyTransaction
+import com.example.trackmoney.db.MoneyTransaction
 
 
 class HomeAdapter :

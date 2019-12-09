@@ -128,6 +128,7 @@
             android:text="@string/expense_title"
             android:textAlignment="center" />
 
+
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
