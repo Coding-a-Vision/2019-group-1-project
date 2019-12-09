@@ -29,7 +29,7 @@ class HomeViewModel : ViewModel() {
     }
 
     // Function to add moneyTransaction
-    fun addIncomeExpenseData(moneyTransaction: MoneyTransaction) {
+    private fun addIncomeExpenseData(moneyTransaction: MoneyTransaction) {
         val newList = moneyTransactionData
         newList.value?.add(moneyTransaction)
         moneyTransactionData.value = newList.value

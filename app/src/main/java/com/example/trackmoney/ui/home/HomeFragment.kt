@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.trackmoney.AddIncomeExpenseActivity
+import com.example.trackmoney.ui.add_money_transaction.AddIncomeExpenseActivity
 import com.example.trackmoney.R
 import com.example.trackmoney.db.MoneyTransaction
 import com.google.android.material.floatingactionbutton.FloatingActionButton
