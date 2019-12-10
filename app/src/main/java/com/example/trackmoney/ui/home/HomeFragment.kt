@@ -3,6 +3,7 @@ package com.example.trackmoney.ui.home
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -72,7 +73,8 @@ class HomeFragment : Fragment() {
                             id = Random.nextInt().toString(),
                             amount = data.extras!!.getFloat("ADD_MONEY_TRANSACTION_RESULT_AMOUNT"),
                             date = data.extras!!.getString("ADD_MONEY_TRANSACTION_RESULT_DATE").toString(),
-                            type = "None." // TODO: Get it from data.extras
+                            type = "None", // TODO: Get it from data.extras
+                            category = null
                         )
                     )
                 )
@@ -101,5 +103,14 @@ class HomeFragment : Fragment() {
 
     private fun showMoneyTransactions(moneyTransactions: List<MoneyTransaction>) {
         homeAdapter.submitList(moneyTransactions)
+
+        moneyTransactions.forEach {
+            var temp = it.id.plus(", ")
+                .plus(it.amount).plus(", ")
+                .plus(it.type).plus(", ")
+                .plus(it.date).plus(", ")
+                .plus(it.category)
+            Log.i("ITEM: ", temp)
+        }
     }
 }

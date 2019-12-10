@@ -1,5 +1,6 @@
 package com.example.trackmoney.db
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -7,6 +8,8 @@ import androidx.room.PrimaryKey
 class MoneyTransaction(
     @PrimaryKey val id: String,
     val amount: Float,
-    val type: String?,
-    val date: String?
+    @ColumnInfo(defaultValue = "expense")
+    val type: String,
+    val date: String?,
+    val category: String?
 )
