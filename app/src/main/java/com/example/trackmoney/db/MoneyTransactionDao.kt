@@ -8,7 +8,7 @@ import androidx.room.Query
 @Dao
 interface MoneyTransactionDao {
 
-    @Query("SELECT * from money_transaction_table ORDER BY id ASC")
+    @Query("SELECT * from money_transaction_table ORDER BY amount ASC")
     suspend fun getMoneyTransactions(): List<MoneyTransaction>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)

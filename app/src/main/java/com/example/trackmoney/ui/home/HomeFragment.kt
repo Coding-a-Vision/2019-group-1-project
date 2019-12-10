@@ -10,14 +10,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.trackmoney.ui.add_money_transaction.AddIncomeExpenseActivity
 import com.example.trackmoney.R
-import com.example.trackmoney.db.DatabaseManager
 import com.example.trackmoney.db.MoneyTransaction
-import com.example.trackmoney.db.MoneyTransactionDao
-import com.example.trackmoney.db.MoneyTransactionRepository
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlin.random.Random
@@ -74,7 +70,8 @@ class HomeFragment : Fragment() {
                     MoneyTransactionEvent.AddMoneyTransaction(
                         MoneyTransaction(
                             id = Random.nextInt().toString(),
-                            amount = data.extras!!.get("ADD_MONEY_TRANSACTION_RESULT_AMOUNT").toString(),
+                            amount = data.extras!!.getFloat("ADD_MONEY_TRANSACTION_RESULT_AMOUNT"),
+                            date = data.extras!!.getString("ADD_MONEY_TRANSACTION_RESULT_DATE").toString(),
                             type = "None." // TODO: Get it from data.extras
                         )
                     )
