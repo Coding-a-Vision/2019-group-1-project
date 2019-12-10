@@ -76,6 +76,7 @@ public abstract class MoneyTransactionDatabase : RoomDatabase() {
                     MoneyTransactionDatabase::class.java,
                     "money_transaction_database"
                 )
+                    .addMigrations(MIGRATION_1_2)
                     .addMigrations(MIGRATION_2_3)
                     .build()
                 INSTANCE = instance
