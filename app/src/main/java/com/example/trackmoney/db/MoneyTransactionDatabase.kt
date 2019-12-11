@@ -4,8 +4,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.sqlite.db.SupportSQLiteDatabase
+import androidx.room.migration.Migration
+import android.icu.lang.UCharacter.GraphemeClusterBreak.V
 
-@Database(entities = arrayOf(MoneyTransaction::class), version = 1, exportSchema = false)
+
+@Database(entities = arrayOf(MoneyTransaction::class), version = 3, exportSchema = false)
 public abstract class MoneyTransactionDatabase : RoomDatabase() {
 
     abstract fun moneyTransactionDao(): MoneyTransactionDao
@@ -14,7 +18,54 @@ public abstract class MoneyTransactionDatabase : RoomDatabase() {
         @Volatile
         private var INSTANCE: MoneyTransactionDatabase? = null
 
-        fun getDatabase(context: Context): MoneyTransactionDatabase{
+        private val MIGRATION_1_2: Migration = object : Migration(1, 2) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL(
+                    """
+                CREATE TABLE new_money_transaction_table (
+                    id TEXT PRIMARY KEY NOT NULL,
+                    amount REAL NOT NULL,
+                    type TEXT,
+                    date TEXT
+                )
+                """.trimIndent()
+                )
+                database.execSQL(
+                    """
+                INSERT INTO new_money_transaction_table (id, amount, type)
+                SELECT id, amount, type FROM money_transaction_table
+                """.trimIndent()
+                )
+                database.execSQL("DROP TABLE money_transaction_table")
+                database.execSQL("ALTER TABLE new_money_transaction_table RENAME TO money_transaction_table")
+            }
+        }
+
+        private val MIGRATION_2_3: Migration = object : Migration(2, 3) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL(
+                    """
+                CREATE TABLE new_money_transaction_table (
+                    id TEXT PRIMARY KEY NOT NULL,
+                    amount REAL NOT NULL,
+                    type TEXT NOT NULL DEFAULT 'expense',
+                    date TEXT,
+                    category TEXT
+                )
+                """.trimIndent()
+                )
+                database.execSQL(
+                    """
+                INSERT INTO new_money_transaction_table (id, amount, type)
+                SELECT id, amount, type FROM money_transaction_table
+                """.trimIndent()
+                )
+                database.execSQL("DROP TABLE money_transaction_table")
+                database.execSQL("ALTER TABLE new_money_transaction_table RENAME TO money_transaction_table")
+            }
+        }
+
+        fun getDatabase(context: Context): MoneyTransactionDatabase {
             val tempInstance = INSTANCE
             if (tempInstance != null) {
                 return tempInstance
@@ -24,7 +75,10 @@ public abstract class MoneyTransactionDatabase : RoomDatabase() {
                     context.applicationContext,
                     MoneyTransactionDatabase::class.java,
                     "money_transaction_database"
-                ).build()
+                )
+                    .addMigrations(MIGRATION_1_2)
+                    .addMigrations(MIGRATION_2_3)
+                    .build()
                 INSTANCE = instance
                 return instance
             }

@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -25,11 +26,15 @@ class AddIncomeExpenseActivity : AppCompatActivity() {
     fun turnToMain(view: View) {
 
         val intent = Intent()
-        val amount = findViewById<EditText>(R.id.income_expense_amount).text.toString()
+        val amount = findViewById<EditText>(R.id.income_expense_amount).text.toString().toFloat()
+        val date = findViewById<Button>(R.id.income_expense_date).text.toString()
+
+        Log.i("DATE ", date)
 
         intent.putExtra("ADD_MONEY_TRANSACTION_RESULT_AMOUNT", amount)
+        intent.putExtra("ADD_MONEY_TRANSACTION_RESULT_DATE", date)
 
-        if (amount.isEmpty()) {
+        if (amount.isNaN()) {
             setResult((Activity.RESULT_CANCELED))
         } else {
             setResult(Activity.RESULT_OK, intent)
