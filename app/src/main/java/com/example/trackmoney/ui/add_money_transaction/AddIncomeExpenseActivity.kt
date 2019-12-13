@@ -22,10 +22,10 @@ class AddIncomeExpenseActivity : AppCompatActivity() {
         date_button = findViewById(R.id.income_expense_date)
         save_button = findViewById(R.id.save_income_expense_button)
 
-        // Ho spostato la funzione turnToMain all'interno dell' onCreate con click listener sul bottone save
-        // Ho aggiunto le variabili per la data e la categoria da mandare all'activity principale
-        // Mancano i dati della radio_group per il tipo (Income/Expense)
-        // Ho rifatto i layout delle schermate c'è da aggiustare un po' i colori
+//         Ho spostato la funzione turnToMain all'interno dell' onCreate con click listener sul bottone save
+//         Ho aggiunto le variabili per la data e la categoria da mandare all'activity principale
+//         Mancano i dati della radio_group per il tipo (Income/Expense)
+//         Ho rifatto i layout delle schermate c'è da aggiustare un po' i colori
 
 
 
