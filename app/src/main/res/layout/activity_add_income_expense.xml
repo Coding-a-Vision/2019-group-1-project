@@ -80,7 +80,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:baselineAligned="false"
-
             android:orientation="horizontal"
             android:weightSum="2">
 
@@ -135,7 +134,7 @@
 
                 <Spinner
 
-                    android:id="@+id/spinner"
+                    android:id="@+id/income_expense_category"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -209,7 +208,6 @@
             android:layout_height="wrap_content"
             android:background="@drawable/btn_save_style"
             android:fontFamily="@font/lato_black"
-            android:onClick="turnToMain"
             android:text="@string/save_income_expense_text"
             android:textColor="@color/colorSecondaryText" />
     </LinearLayout>

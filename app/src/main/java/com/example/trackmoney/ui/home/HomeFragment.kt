@@ -74,7 +74,7 @@ class HomeFragment : Fragment() {
                             amount = data.extras!!.getFloat("ADD_MONEY_TRANSACTION_RESULT_AMOUNT"),
                             date = data.extras!!.getString("ADD_MONEY_TRANSACTION_RESULT_DATE").toString(),
                             type = "None", // TODO: Get it from data.extras
-                            category = null
+                            category =  data.extras!!.getString("ADD_MONEY_TRANSACTION_RESULT_CATEGORY").toString()
                         )
                     )
                 )

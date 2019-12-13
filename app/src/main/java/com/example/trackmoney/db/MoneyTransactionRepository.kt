@@ -7,4 +7,8 @@ class MoneyTransactionRepository(private val moneyTransactionDao: MoneyTransacti
     }
 
     suspend fun getMoneyTransactions() = moneyTransactionDao.getMoneyTransactions()
+
+    suspend fun deleteAll() = moneyTransactionDao.deleteAll()
+
+//    suspend fun getTotalAmount() = moneyTransactionDao.getTotalAmount()
 }
