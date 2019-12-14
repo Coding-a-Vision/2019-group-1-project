@@ -73,8 +73,11 @@ class HomeFragment : Fragment() {
                             id = Random.nextInt().toString(),
                             amount = data.extras!!.getFloat("ADD_MONEY_TRANSACTION_RESULT_AMOUNT"),
                             date = data.extras!!.getString("ADD_MONEY_TRANSACTION_RESULT_DATE").toString(),
-                            type = "None", // TODO: Get it from data.extras
-                            category =  data.extras!!.getString("ADD_MONEY_TRANSACTION_RESULT_CATEGORY").toString()
+                            type = data.extras!!.getString(
+                                "ADD_MONEY_TRANSACTION_RESULT_TYPE",
+                                "expense"
+                            ).toString(),
+                            category = data.extras!!.getString("ADD_MONEY_TRANSACTION_RESULT_CATEGORY").toString()
                         )
                     )
                 )

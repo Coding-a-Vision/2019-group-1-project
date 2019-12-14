@@ -14,20 +14,21 @@
         android:layout_marginBottom="76dp"
         android:adjustViewBounds="true"
         android:isScrollContainer="false"
-        app:srcCompat="@drawable/ic_action_add"
         android:onClick="addIncomeExpense"
         app:backgroundTint="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_action_add" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="50dp"
         android:background="@color/colorBackground"
         android:orientation="vertical"
-        android:padding="20dp"
+        android:padding="@dimen/dim1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,17 +52,18 @@
                     android:id="@+id/total_title"
                     style="@style/title_style"
                     android:text="@string/total_title"
-                    android:textColor="@color/colorSecondaryText" />
+                    android:textColor="@color/colorSecondaryText"
+                    android:textAlignment="center"/>
 
                 <TextView
                     android:id="@+id/total"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="0dp"
                     android:fontFamily="@font/lato_black"
                     android:text="0.00"
                     android:textColor="@color/colorMainText"
-                    android:textSize="46sp" />
+                    android:textSize="30sp"
+                    android:textAlignment="center"/>
             </LinearLayout>
 
             <LinearLayout
@@ -74,17 +76,18 @@
                     android:id="@+id/income_title"
                     style="@style/title_style"
                     android:text="@string/income_title"
-                    android:textColor="@color/colorGreen" />
+                    android:textColor="@color/colorGreen"
+                    android:textAlignment="center"/>
 
                 <TextView
                     android:id="@+id/income"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
                     android:fontFamily="@font/lato_black"
                     android:text="0.00"
                     android:textColor="@color/colorMainText"
-                    android:textSize="@dimen/amount_text_size" />
+                    android:textSize="@dimen/amount_text_size"
+                    android:textAlignment="center"/>
             </LinearLayout>
 
             <LinearLayout
@@ -97,17 +100,18 @@
                     android:id="@+id/expense_title"
                     style="@style/title_style"
                     android:text="@string/expense_title"
-                    android:textColor="@color/colorRed" />
+                    android:textColor="@color/colorRed"
+                    android:textAlignment="center"/>
 
                 <TextView
                     android:id="@+id/expense"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
                     android:fontFamily="@font/lato_black"
                     android:text="0.00"
                     android:textColor="@color/colorMainText"
-                    android:textSize="@dimen/amount_text_size" />
+                    android:textSize="@dimen/amount_text_size"
+                    android:textAlignment="center"/>
 
             </LinearLayout>
         </LinearLayout>
@@ -121,17 +125,17 @@
                 android:id="@+id/divider"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/dim1"
                 android:layout_weight="1"
                 android:background="@color/colorSecondaryText" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginTop="@dimen/dim1"
                 android:fontFamily="@font/lato_black"
                 android:text="@string/transactions"
+                android:textAlignment="center"
                 android:textColor="@color/colorSecondaryText" />
         </LinearLayout>
 
