@@ -22,6 +22,8 @@ class AddIncomeExpenseActivity : AppCompatActivity() {
         date_button = findViewById(R.id.income_expense_date)
         save_button = findViewById(R.id.save_income_expense_button)
 
+        date_button.text = DatePickerFragment().getToday()
+
         save_button.setOnClickListener {
 
             val intent = Intent()
