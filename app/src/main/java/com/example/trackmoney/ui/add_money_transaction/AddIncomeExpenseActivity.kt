@@ -23,27 +23,29 @@ class AddIncomeExpenseActivity : AppCompatActivity() {
         save_button = findViewById(R.id.save_income_expense_button)
 
         save_button.setOnClickListener {
-            // Called when user taps the Add Income/Expense button
+
             val intent = Intent()
-            val amount =
-                findViewById<EditText>(R.id.income_expense_amount).text.toString().toFloat()
-            val date = findViewById<Button>(R.id.income_expense_date).text.toString()
-            val category =
-                findViewById<Spinner>(R.id.income_expense_category).selectedItem.toString()
-            val checkedRadioButton =
-                findViewById<RadioGroup>(R.id.radio_group_income_expense).checkedRadioButtonId
-            val checked = findViewById<RadioButton>(checkedRadioButton).text.toString()
 
-            intent.putExtra("ADD_MONEY_TRANSACTION_RESULT_AMOUNT", amount)
-            intent.putExtra("ADD_MONEY_TRANSACTION_RESULT_DATE", date)
-            intent.putExtra("ADD_MONEY_TRANSACTION_RESULT_CATEGORY", category)
-            intent.putExtra("ADD_MONEY_TRANSACTION_RESULT_TYPE", checked)
+            // Check if data exists
+            try {
+                val amount =
+                    findViewById<EditText>(R.id.income_expense_amount).text.toString().toFloat()
+                val date = findViewById<Button>(R.id.income_expense_date).text.toString()
+                val category =
+                    findViewById<Spinner>(R.id.income_expense_category).selectedItem.toString()
+                val checkedRadioButton =
+                    findViewById<RadioGroup>(R.id.radio_group_income_expense).checkedRadioButtonId
+                val checked = findViewById<RadioButton>(checkedRadioButton).text.toString()
 
-            if (amount.isNaN()) {
-                setResult((Activity.RESULT_CANCELED))
-            } else {
-                setResult(Activity.RESULT_OK, intent)
+                intent.putExtra("ADD_MONEY_TRANSACTION_RESULT_AMOUNT", amount)
+                intent.putExtra("ADD_MONEY_TRANSACTION_RESULT_DATE", date)
+                intent.putExtra("ADD_MONEY_TRANSACTION_RESULT_CATEGORY", category)
+                intent.putExtra("ADD_MONEY_TRANSACTION_RESULT_TYPE", checked)
+            } catch (error: Throwable) {
+                setResult(Activity.RESULT_CANCELED)
             }
+
+            setResult(Activity.RESULT_OK, intent)
 
             finish()
         }
