@@ -19,4 +19,13 @@ interface MoneyTransactionDao {
     @Query("DELETE FROM money_transaction_table")
     suspend fun deleteAll()
 
+    @Query("SELECT SUM(amount) from money_transaction_table WHERE type='Income'")
+    suspend fun getIncomes(): Float
+
+    @Query("SELECT SUM(amount) from money_transaction_table WHERE type='Expense'")
+    suspend fun getExpenses(): Float
+
+    @Query("SELECT SUM(amount) from money_transaction_table")
+    suspend fun getTotalAmount(): Float
+
 }

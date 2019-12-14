@@ -107,6 +107,7 @@ class HomeFragment : Fragment() {
 
     private fun showError(error: Throwable) {
         Toast.makeText(context, "Error!", Toast.LENGTH_SHORT).show()
+        Log.i("Error", "Error in Home", error)
     }
 
     private fun showMoneyTransactions(moneyTransactions: List<MoneyTransaction>) {
