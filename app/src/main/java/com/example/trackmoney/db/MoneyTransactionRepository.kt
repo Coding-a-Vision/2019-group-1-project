@@ -7,4 +7,12 @@ class MoneyTransactionRepository(private val moneyTransactionDao: MoneyTransacti
     }
 
     suspend fun getMoneyTransactions() = moneyTransactionDao.getMoneyTransactions()
+
+    suspend fun deleteAll() = moneyTransactionDao.deleteAll()
+
+    suspend fun getExpenses(): Float = moneyTransactionDao.getExpenses()
+
+    suspend fun getIncomes(): Float = moneyTransactionDao.getIncomes()
+
+    suspend fun getTotalAmount(): Float = moneyTransactionDao.getTotalAmount()
 }

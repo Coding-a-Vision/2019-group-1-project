@@ -11,6 +11,12 @@ import java.util.*
 
 class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener {
 
+    private var today: String = "Pick Date"
+
+    init {
+        setToday(Calendar.getInstance())
+    }
+
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         // Use the current date as the default date in the picker
         val c = Calendar.getInstance()
@@ -29,5 +35,17 @@ class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener 
 
         // Pass the picked date using activity method
         (activity as AddIncomeExpenseActivity).updateDate(date_picked)
+    }
+
+    private fun setToday(calendar: Calendar) {
+        today = calendar.get(Calendar.DATE).toString().plus("/")
+            .plus(calendar.get(Calendar.MONTH).toString()).plus("/")
+            .plus(calendar.get(Calendar.YEAR).toString())
+
+        Log.i("TODAY ", today)
+    }
+
+    fun getToday(): String {
+        return today
     }
 }

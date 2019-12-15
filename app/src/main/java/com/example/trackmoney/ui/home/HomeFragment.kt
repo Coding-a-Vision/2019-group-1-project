@@ -66,19 +66,27 @@ class HomeFragment : Fragment() {
 
         if (requestCode == 1000 && resultCode == Activity.RESULT_OK) {
             if (data != null) {
-                // Send AddMoneyTransaction Event
-                homeViewModel.send(
-                    MoneyTransactionEvent.AddMoneyTransaction(
-                        MoneyTransaction(
-                            id = Random.nextInt().toString(),
-                            amount = data.extras!!.getFloat("ADD_MONEY_TRANSACTION_RESULT_AMOUNT"),
-                            date = data.extras!!.getString("ADD_MONEY_TRANSACTION_RESULT_DATE").toString(),
-                            type = "None", // TODO: Get it from data.extras
-                            category = null
+
+                // Check if amount exists
+                if (data.hasExtra("ADD_MONEY_TRANSACTION_RESULT_AMOUNT")) {
+
+                    // Send AddMoneyTransaction Event
+                    homeViewModel.send(
+                        MoneyTransactionEvent.AddMoneyTransaction(
+                            MoneyTransaction(
+                                id = Random.nextInt().toString(),
+                                amount = data.extras!!.getFloat("ADD_MONEY_TRANSACTION_RESULT_AMOUNT"),
+                                date = data.extras!!.getString("ADD_MONEY_TRANSACTION_RESULT_DATE").toString(),
+                                type = data.extras!!.getString(
+                                    "ADD_MONEY_TRANSACTION_RESULT_TYPE",
+                                    "expense"
+                                ).toString(),
+                                category = data.extras!!.getString("ADD_MONEY_TRANSACTION_RESULT_CATEGORY").toString()
+                            )
                         )
                     )
-                )
-                Toast.makeText(context, "Transaction added.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Transaction added.", Toast.LENGTH_SHORT).show()
+                }
             } else {
                 Toast.makeText(context, "Error, no data.", Toast.LENGTH_SHORT).show()
             }
@@ -99,6 +107,7 @@ class HomeFragment : Fragment() {
 
     private fun showError(error: Throwable) {
         Toast.makeText(context, "Error!", Toast.LENGTH_SHORT).show()
+        Log.i("Error", "Error in Home", error)
     }
 
     private fun showMoneyTransactions(moneyTransactions: List<MoneyTransaction>) {

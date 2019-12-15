@@ -23,6 +23,8 @@ class HomeAdapter :
     override fun onBindViewHolder(holder: MoneyTransactionViewHolder, position: Int) {
         val moneyTransaction = getItem(position)
         holder.moneyTransaction.text = moneyTransaction.amount.toString()
+        holder.moneyCategory.text = moneyTransaction.category.toString()
+        holder.moneyDate.text = moneyTransaction.date.toString()
 
         // Onclick listener to show the details of a specific MoneyTransaction
         holder.moneyTransaction.setOnClickListener {
@@ -36,6 +38,8 @@ class HomeAdapter :
 
 class MoneyTransactionViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val moneyTransaction = view.findViewById<TextView>(R.id.textView_home_row)
+    val moneyCategory = view.findViewById<TextView>(R.id.card_category)
+    val moneyDate = view.findViewById<TextView>(R.id.card_date)
 }
 
 class MoneyTransactionDiffUtil : DiffUtil.ItemCallback<MoneyTransaction>() {

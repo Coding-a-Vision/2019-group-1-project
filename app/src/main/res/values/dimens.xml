@@ -5,4 +5,6 @@
 
     <dimen name="dim1">8dp</dimen>
     <dimen name="dim2">32dp</dimen>
+    <dimen name="title_text_size">24sp</dimen>
+    <dimen name="amount_text_size">24sp</dimen>
 </resources>
